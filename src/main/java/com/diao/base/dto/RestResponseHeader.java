@@ -12,17 +12,17 @@ import java.util.Optional;
 public class RestResponseHeader implements Serializable {
     private static final String KEY_APP = "spring.application.name";
 
-    private String code = "10000";
+    private Integer code = 10000;
     private String app;
     private String message;
 
-    public RestResponseHeader(String code, String message) {
+    public RestResponseHeader(Integer code, String message) {
         this.code = code;
         this.message = message;
         this.app = (String)Optional.ofNullable(this.app).orElse(((Environment)SpringContextUtils.getBean(Environment.class)).getProperty("spring.application.name"));
     }
 
-    public String getCode() {
+    public Integer getCode() {
         return this.code;
     }
 
@@ -34,7 +34,7 @@ public class RestResponseHeader implements Serializable {
         return this.message;
     }
 
-    public void setCode(String code) {
+    public void setCode(Integer code) {
         this.code = code;
     }
 
